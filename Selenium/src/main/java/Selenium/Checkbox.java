@@ -1,10 +1,12 @@
 package Selenium;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.time.Duration;
 import java.util.List;
 
 public class Checkbox
@@ -15,10 +17,16 @@ public class Checkbox
 
         WebDriver driver = new ChromeDriver();
 
-        driver.get("https://letcode.in/radio");
+        driver.get("https://letcode.in/test");
 
         driver.manage().window().maximize();
 
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("window.scrollBy(0,200)");
+
+
+        WebElement menu = driver.findElement(By.xpath("//a[@href='/radio']"));
+        menu.click();
 
         WebElement c1 = driver.findElement(By.xpath("//input[@id='yes']"));
         c1.click();
