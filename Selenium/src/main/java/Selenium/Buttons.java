@@ -96,6 +96,6 @@ public class Buttons
     public static void main(String[] args)
     {
         Buttons obj  = new Buttons();
-        obj.Click_hold();
+        obj.Buttoncolour();
     }
 }
