@@ -1,11 +1,10 @@
-package Selenium;
+package Selenium_Practice;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import javax.imageio.IIOException;
 import java.io.*;
 import java.util.Collection;
 import java.util.Properties;

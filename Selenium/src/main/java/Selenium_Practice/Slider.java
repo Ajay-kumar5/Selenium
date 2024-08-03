@@ -1,10 +1,8 @@
-package Selenium;
+package Selenium_Practice;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-
-import javax.swing.*;
 
 public class Slider
 {
