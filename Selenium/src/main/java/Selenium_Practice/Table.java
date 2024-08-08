@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.List;
 
@@ -14,7 +15,10 @@ public class Table {
 
         System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\Driver\\127\\chromedriver.exe");
 
-        WebDriver driver = new ChromeDriver();
+        ChromeOptions option = new ChromeOptions();
+        option.addArguments("--headless=new");
+
+        WebDriver driver = new ChromeDriver(option);
 
         driver.get("https://demo.guru99.com/test/web-table-element.php");
 
