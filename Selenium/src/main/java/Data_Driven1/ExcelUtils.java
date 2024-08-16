@@ -1,6 +1,7 @@
 package Data_Driven1;
 
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -53,10 +54,12 @@ public class ExcelUtils {
         row = ws.getRow(rownum);
         cell=row.getCell(colnum);
 
-        String data = "";
+        String data;
         try
         {
-            data.toString();
+            //data= cell.toString();
+            DataFormatter dataFormatter = new DataFormatter();
+            data = dataFormatter.formatCellValue(cell);
         }
         catch (Exception e)
         {

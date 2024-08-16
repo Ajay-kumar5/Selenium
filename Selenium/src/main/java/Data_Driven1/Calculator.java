@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
 public class Calculator
 {
@@ -29,11 +30,12 @@ public class Calculator
 
         driver.manage().window().maximize();
 
-        String filepath = "./Data-Driven Test1.xlsx";
+        File file = new File("./Data-Driven Test1.xlsx");
+        String filepath = file.getPath();
 
         int rows = ExcelUtils.getRowcount(filepath,"Sheet1");
 
-
+        System.out.println(rows);
 
         for(int i = 1;i<=rows;i++)
         {
@@ -55,14 +57,17 @@ public class Calculator
             WebElement per1 = driver.findElement(By.xpath("//input[@id='tenure']"));
             per1.sendKeys(Period1);
 
-            Select per2 = new Select (driver.findElement(By.xpath("//select[@id='tenurePeriod']")));
-            per2.selectByVisibleText(Period2);
+            WebElement per2 = driver.findElement(By.xpath("//select[@id='tenurePeriod']"));
+            Select s1 = new Select(per2);
+            s1.selectByVisibleText(Period2);
 
-            Select fre = new Select(driver.findElement(By.xpath("//select[@id='frequency']")));
-            fre.selectByVisibleText(Frequency);
+            WebElement fre = driver.findElement(By.xpath("//select[@id='frequency']"));
+            Select s2 = new Select(fre);
+            s2.selectByVisibleText(Frequency);
 
-            WebElement cal = driver.findElement(By.xpath("//div[@class='cal_div']//a[1]"));
+            WebElement cal = driver.findElement(By.xpath("//div[@class='CTR PT15']//a[1]"));
             cal.click();
+
 
             WebElement act_value = driver.findElement(By.xpath("//span[@id='resp_matval']"));
             String x = act_value.getText();
@@ -71,17 +76,17 @@ public class Calculator
             {
                 System.out.println("Test Passed");
                 ExcelUtils.setCelldata(filepath,"Sheet1",i,7,"Passed");
-                ExcelUtils.fillGreencolor(filepath,"Sheet1",i,7);
+                //ExcelUtils.fillGreencolor(filepath,"Sheet1",i,7);
             }
             else
             {
                 System.out.println("Test Failed");
                 ExcelUtils.setCelldata(filepath,"Sheet1",i,7,"Failed");
-                ExcelUtils.fillRedcolor(filepath,"Sheet1",i,7);
+                //ExcelUtils.fillRedcolor(filepath,"Sheet1",i,7);
             }
 
             Thread.sleep(3000);
-            driver.findElement(By.xpath("//div[@class='PT25']//a[2]")).click();
+            driver.findElement(By.xpath("//div[@class='CTR PT15']//a[2]")).click();
 
 
         }
